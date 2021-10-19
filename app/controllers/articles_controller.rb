@@ -43,6 +43,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def articles_params
     params.require(:article).permit(:title, :body)
   end
