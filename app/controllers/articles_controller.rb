@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
+# Articles Controller
 class ArticlesController < ApplicationController
-  
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-  
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
+
   def index
     @articles = Article.all
   end
