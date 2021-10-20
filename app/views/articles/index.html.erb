@@ -1,15 +1,30 @@
-<h1>Articles</h1>
+<div class="px-10">
 
-Our blog has <%= Article.public_count %> articles and counting!
+  <div class="max-w-lg mx-auto mt-16 text-center max-w-sm rounded overflow-hidden p-10">
+    <h1 class="mb-4 text-3xl font-black">Articles</h1>
+    <p class="text-lg leading-snug">
+      Our blog has <%= Article.public_count %> articles and counting!
+    </p>
+  </div>
 
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
+  <ul>
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <li>
+            <div class='mb-3 w-full md:w-1/2 mx-auto bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded'>
+              <%= link_to article do %>
+                <i class="fas fa-user-edit"></i> Author name
+                <h2 class='font-bold'><%= article.title %></h2>
+                <p><%= article.updated_at.strftime('%b %d, %Y') %></p>
+                <% # <%= image_tag "default.jpeg" %>
+              <% end %>
+            </div>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+ 
+  <%= link_to "New Article", new_article_path, 
+      class: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded' %>
 
-<%= link_to "New Article", new_article_path %>
+</div>
