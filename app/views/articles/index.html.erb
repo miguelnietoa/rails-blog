@@ -1,6 +1,7 @@
-<div class="px-10">
+<%= render 'shared/navbar' %>
 
-  <div class="max-w-lg mx-auto mt-16 text-center max-w-sm rounded overflow-hidden p-10">
+<div class="px-10">
+  <div class="my-5 text-center rounded overflow-hidden p-10">
     <h1 class="mb-4 text-3xl font-black">Articles</h1>
     <p class="text-lg leading-snug">
       Our blog has <%= Article.public_count %> articles and counting!
@@ -11,7 +12,7 @@
     <% @articles.each do |article| %>
       <% unless article.archived? %>
         <li>
-            <div class='mb-3 w-full md:w-1/2 mx-auto bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded'>
+            <div class='mb-3 w-full md:w-1/2 mx-auto bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-lg'>
               <%= link_to article do %>
                 <i class="fas fa-user-edit"></i> Author name
                 <h2 class='font-bold'><%= article.title %></h2>
@@ -23,8 +24,4 @@
       <% end %>
     <% end %>
   </ul>
- 
-  <%= link_to "New Article", new_article_path, 
-      class: 'bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded' %>
-
 </div>
