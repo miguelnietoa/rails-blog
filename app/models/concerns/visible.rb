@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Visible module
 module Visible
   extend ActiveSupport::Concern
 
