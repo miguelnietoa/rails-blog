@@ -1,17 +1,18 @@
 <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
+  <div class="rounded-lg bg-gray-300 px-6 py-3 mt-3">
+    <h3 class="font-black">
+      <%= comment.commenter %>
+    </h3>
+    <p class="break-words">
+      <%= comment.body %>
+    </p>
 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-
-  <p>
-    <%= link_to 'Destroy Comment', [comment.article, comment],
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-  </p>
+    <div class="flex justify-end">
+      <%= link_to [comment.article, comment],
+        method: :delete,
+        data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash text-red-600"></i>
+      <% end %>
+    </div>
+  </div>
 <% end %>
