@@ -4,12 +4,12 @@
     <div class="mb-4 flex justify-between">
       <div class="w-5/12">
         <%= form.label :commenter,
-              class: "block text-gray-700 text-sm font-bold mb-2" %>
+              class: "block text-sm font-bold mb-2" %>
         <%= form.text_field :commenter, placeholder: "Enter your name",
               class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
       </div>
       <div class="w-5/12">
-        <%= form.label :status, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.label :status, class: "block text-sm font-bold mb-2" %>
         <label class="block text-left" >
           <select name="comment[status]" id="comment_status" class="form-select block w-full mt-1 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
               <option value="public">public</option>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-4">
       <%= form.label :body,
-            class: "block text-gray-700 text-sm font-bold mb-2" %>
+            class: "block text-sm font-bold mb-2" %>
       <%= form.text_area :body, rows: 3, placeholder: "Share what you think about this article",
             class: "form-textarea mt-1 block w-full shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     </div>
