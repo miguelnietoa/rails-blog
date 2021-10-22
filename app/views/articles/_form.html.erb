@@ -1,26 +1,39 @@
-<%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="mx-auto w-4/5 lg:w-3/5">
+  <%= form_with model: article,
+        class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |form| %>
+    <div class="mb-4 flex justify-between">
+      <div class="w-5/12">
+        <%= form.label :title,
+              class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= form.text_field :title, placeholder: "Enter your title",
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+          <div class="text-red-600"><%= message %></div>
+        <% end %>
+      </div>
+      <div class="w-5/12">
+        <%= form.label :status, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <label class="block text-left" >
+          <select name="article[status]" id="article_status" class="form-select block w-full mt-1 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <option value="public" <%= "selected" if article.status == "public" %>>public</option>
+              <option value="private" <%= "selected" if article.status == "private" %>>private</option>
+              <option value="archived" <%= "selected" if article.status == "archived" %>>archived</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="mb-4">
+      <%= form.label :body,
+            class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.text_area :body, rows: 3, placeholder: "Share what you think about this article",
+            class: "form-textarea mt-1 block w-full shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div class="text-red-600"><%= message %></div>
+      <% end %>
+    </div>
+    
+    <div class="flex justify-end">
+      <%= form.submit class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>    
+  <% end %>
+</div>
