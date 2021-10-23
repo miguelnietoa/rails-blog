@@ -6,19 +6,22 @@
         <i class="far fa-comment-alt"></i>
         <span>Bloggy</span>
       <% end %>
-    <li class="md:mr-10 my-2 md:my-auto">
-      <span>Username</span>
     </li>
-    <% if true %>
-      <div class="flex">
-        <li class="mr-6">
-          <%= link_to "New Article", new_article_path, 
-              class: 'inline-block w-32 md:w-autotext-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded' %>
-        </li>
-        <li class="">
-          <a class="inline-block w-32 md:w-auto text-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded" href="#">Log out</a>
-        </li>
-      </div>
-    <% end %>
+    <li class="md:mr-10 my-2 md:my-auto">
+      <% if logged_in?  %>
+        <span><%= current_user.username %></span>
+      <% else %>
+        <span>a</span>
+      <% end %>
+    </li>
+    <div class="flex">
+      <li class="mr-6">
+        <%= link_to "New Article", new_article_path, 
+            class: 'inline-block w-32 md:w-autotext-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded' %>
+      </li>
+      <li class="">
+        <a class="inline-block w-32 md:w-auto text-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded" href="#">Log out</a>
+      </li>
+    </div>
   </ul>
 </nav>
