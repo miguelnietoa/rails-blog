@@ -34,7 +34,7 @@
     <h2 class="text-xl">Comments</h2>
     <hr/>
     <% if @article.comments.empty? %>
-      <h3 class="text-center my-4">There are no comments yet, be the first to share what you think</h3>
+      <h3 class="text-center my-4">There are no comments yet, be the first to share what you think!</h3>
     <% else %>
       <%= render @article.comments %>
     <% end %>
@@ -46,7 +46,7 @@
     <% if logged_in? %>
       <%= render 'comments/form' %>
     <% else %>
-      <h3 class="text-center my-4">Please <strong><%= link_to "log in", login_path %></strong> to add a comment</h3>
+      <h3 class="text-center my-4">Please <strong><%= link_to "log in", login_path %></strong> to add a comment!</h3>
     <% end %>
   </div>
 </div>

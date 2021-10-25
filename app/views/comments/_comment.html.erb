@@ -7,12 +7,15 @@
       <%= comment.body %>
     </p>
 
-    <div class="flex justify-end">
-      <%= link_to [comment.article, comment],
-        method: :delete,
-        data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash text-red-600"></i>
-      <% end %>
-    </div>
+    <% # Only owner of article or commenter user can destroy comment %>
+    <% if current_user&.id == @article.user_id || current_user&.id == comment.user_id %>
+      <div class="flex justify-end">
+        <%= link_to [comment.article, comment],
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash text-red-600"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
