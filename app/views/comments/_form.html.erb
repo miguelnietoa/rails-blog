@@ -1,19 +1,33 @@
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div class="w-full">
+  <%= form_with model: [ @article, @article.comments.build ],
+        class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |form| %>
+    <div class="mb-4 flex justify-between">
+      <div class="w-5/12">
+        <%= form.label :commenter,
+              class: "block text-sm font-bold mb-2" %>
+        <%= form.text_field :commenter, placeholder: "Enter your name",
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+      <div class="w-5/12">
+        <%= form.label :status, class: "block text-sm font-bold mb-2" %>
+        <label class="block text-left" >
+          <select name="comment[status]" id="comment_status" class="form-select block w-full mt-1 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <option value="public">public</option>
+              <option value="private">private</option>
+              <option value="archived">archived</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="mb-4">
+      <%= form.label :body,
+            class: "block text-sm font-bold mb-2" %>
+      <%= form.text_area :body, rows: 3, placeholder: "Share what you think about this article",
+            class: "form-textarea mt-1 block w-full shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    
+    <div class="flex justify-end">
+      <%= form.submit class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>    
+  <% end %>
+</div>
