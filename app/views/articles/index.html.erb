@@ -10,13 +10,13 @@
     <% @articles.each do |article| %>
       <% unless article.archived? %>
         <li>
-          <%= link_to article do %>
-            <div class='mb-3 w-full md:w-1/2 mx-auto bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-lg'>
+          <div class='mb-3 w-full md:w-1/2 mx-auto bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded-lg'>
+            <%= link_to article do %>
               <i class="fas fa-user-edit"></i> Author name
               <h2 class='font-bold'><%= article.title %></h2>
               <p><%= article.updated_at.strftime('%b %d, %Y') %></p>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     <% end %>

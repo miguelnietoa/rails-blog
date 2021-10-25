@@ -1,22 +1,26 @@
-<%= form_with(model: @user, local: true) do |f| %>
-
-  <div class="">
-    <%= f.label :username %><br/>
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="">
-    <%= f.label :password %><br/>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="">
-    <%= f.label :info %><br/>
-    <%= f.text_area :info %>
-  </div>
-
-  <div class="">
-    <%= f.submit %>
-  </div>
-
-<% end %>
+<div class="mx-auto w-4/5 md:w-2/5">
+  <%= form_with(model: @user, local: true,
+        class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |form| %>
+    <div class="mb-4">
+      <%= form.label :username,
+            class: "block text-sm font-bold mb-2" %>
+      <%= form.text_field :username,
+            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :password,
+            class: "block text-sm font-bold mb-2" %>
+      <%= form.password_field :password,
+            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="mb-6">
+      <%= form.label :info,
+            class: "block text-sm font-bold mb-2" %>
+      <%= form.text_area :info, rows: 3, placeholder: "Tell us about you",
+            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    </div>
+    <div class="flex flex-col">
+      <%= form.submit "Sign up", class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>    
+  <% end %>
+</div>
