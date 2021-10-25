@@ -1,7 +1,7 @@
 <% unless comment.archived? %>
   <div class="rounded-lg bg-gray-300 px-6 py-3 mt-3">
     <h3 class="font-black">
-      <%= comment.commenter %>
+      <%= User.find(comment.user_id).username %>
     </h3>
     <p class="break-words">
       <%= comment.body %>
