@@ -1,18 +1,21 @@
 <% unless comment.archived? %>
   <div class="rounded-lg bg-gray-300 px-6 py-3 mt-3">
     <h3 class="font-black">
-      <%= comment.commenter %>
+      <%= User.find(comment.user_id).username %>
     </h3>
     <p class="break-words">
       <%= comment.body %>
     </p>
 
-    <div class="flex justify-end">
-      <%= link_to [comment.article, comment],
-        method: :delete,
-        data: { confirm: "Are you sure?" } do %>
-        <i class="fas fa-trash text-red-600"></i>
-      <% end %>
-    </div>
+    <% # Only owner of article or commenter user can destroy comment %>
+    <% if current_user&.id == @article.user_id || current_user&.id == comment.user_id %>
+      <div class="flex justify-end">
+        <%= link_to [comment.article, comment],
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+          <i class="fas fa-trash text-red-600"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>

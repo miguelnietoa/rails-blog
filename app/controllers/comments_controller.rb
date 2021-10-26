@@ -2,11 +2,11 @@
 
 # Comments Controller
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'dhh', password: 'secret', only: :destroy
+  before_action :require_user
 
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = @article.comments.create(comment_params.merge(user_id: current_user.id))
     redirect_to article_path(@article)
   end
 
@@ -20,6 +20,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :body, :status)
+    params.require(:comment).permit(:body, :status)
   end
 end
