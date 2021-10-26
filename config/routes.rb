@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users, except: [:new]
+  post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
+  post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
 
   resources :articles do
     resources :comments
