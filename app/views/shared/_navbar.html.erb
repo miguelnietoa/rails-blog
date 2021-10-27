@@ -13,18 +13,27 @@
     </li>
     <div class="flex">
       <li class="mr-6">
-        <%= link_to "New Article", logged_in? ? new_article_path : login_path, 
-            class: 'inline-block w-32 md:w-autotext-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded' %>
+        <%= link_to logged_in? ? new_article_path : login_path,
+            class: 'inline-block w-36 md:w-auto text-center bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg' do %>
+          <i class="fas fa-plus-circle"></i>
+          <span>New Article</span>
+        <% end %>
       </li>
       <li class="">
         <% if logged_in? %>
-          <%= link_to "Log out", logout_path,
+          <%= link_to logout_path,
                 method: :delete,
                 data: { confirm: "Are you sure?" },
-                class: "inline-block w-32 md:w-auto text-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded" %>
+                class: "inline-block w-36 md:w-auto text-center bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg" do %>
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Log out</span>
+          <% end %>
         <% else %>
-          <%= link_to "Log in", login_path,
-                class: "inline-block w-32 md:w-auto text-center bg-gray-500 hover:bg-gray-400 text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded" %>
+          <%= link_to login_path,
+                class: "inline-block w-32 md:w-auto text-center bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg" do %>
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Log in</span>
+          <% end %>
         <% end %>
         </a>
       </li>
