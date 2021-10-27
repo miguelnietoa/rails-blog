@@ -43,7 +43,19 @@
       <h2 class="text-xl">Add a comment:</h2>
       <hr/>
       <% if logged_in? %>
-        <%= render 'comments/form' %>
+        <% if current_user.followees.include?(User.find(@article.user_id)) || current_user.id == @article.user_id %>
+          <%= render 'comments/form' %>
+        <% else %>
+          <h3 class="text-center my-4">
+            Please 
+            <strong>
+              <%= link_to "follow @#{User.find(@article.user_id).username}", 
+                  follow_user_path(User.find(@article.user_id)), 
+                  method: :hpost %>
+            </strong>
+            to add a comment!
+          </h3>
+        <% end %>
       <% else %>
         <h3 class="text-center my-4">Please <strong><%= link_to "log in", login_path %></strong> to add a comment!</h3>
       <% end %>

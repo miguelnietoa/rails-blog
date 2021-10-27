@@ -9,7 +9,10 @@
         
       <% if logged_in? %>
         <% if user.id == current_user.id %>
-          <%= link_to "Log out", logout_path, class: "block" %>
+          <%= link_to "Log out", logout_path, 
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "block" %>
         <% elsif current_user.followees.include?(user) %>
           <%= link_to "Unfollow", unfollow_user_path, method: :post, class: "block" %>
         <% else %>
