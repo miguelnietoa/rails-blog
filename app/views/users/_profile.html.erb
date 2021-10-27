@@ -1,0 +1,41 @@
+<div class="w-full">
+  <div class="rounded-md border p-5">
+    <div class="flex items-center pb-3">
+      <i class="fas fa-user-circle text-4xl pr-2"></i>
+      <span class="font-bold text-xl break-all"><%= user.username %></span>
+    </div>
+
+    <div class="w-full text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
+        
+      <% if logged_in? %>
+        <% if user.id == current_user.id %>
+          <%= link_to "Log out", logout_path, class: "block" %>
+        <% elsif current_user.followees.include?(user) %>
+          <%= link_to "Unfollow", unfollow_user_path, method: :post, class: "block" %>
+        <% else %>
+          <%= link_to "Follow", follow_user_path, method: :post, class: "block" %>
+        <% end%>
+      <% else %>
+        <%= link_to "Follow", login_path, class: "block" %>
+      <% end %>
+    </div>
+    
+
+    <div class="my-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-first-name">
+        Info
+      </label>
+      <p><%= user.info %></p>
+    </div>
+    <div class="my-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-first-name">
+        Joined
+      </label>
+      <p><%= user.created_at.strftime('%b %d, %Y') %></p>
+    </div>
+  </div>
+
+  <div>
+
+  </div>
+</div>

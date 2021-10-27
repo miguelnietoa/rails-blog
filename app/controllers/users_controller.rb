@@ -16,10 +16,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def follow
     @user = User.find(params[:id])
     current_user.followees << @user
-    redirect_back(fallback: user_path(@user))
+    redirect_back(fallback_location: user_path(@user))
   end
 
   def unfollow
