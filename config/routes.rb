@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  resources :users, except: [:new]
+  resources :users, except: %i[new show]
+  get '/:username', to: 'users#show'
   post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
   post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
 
