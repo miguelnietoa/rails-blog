@@ -5,23 +5,19 @@
       <span class="font-bold text-xl break-all"><%= user.username %></span>
     </div>
 
-    <div class="w-full text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
-        
-      <% if logged_in? %>
-        <% if user.id == current_user.id %>
-          <%= link_to "Log out", logout_path, 
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: "block" %>
-        <% elsif current_user.followees.include?(user) %>
-          <%= link_to "Unfollow", unfollow_user_path, method: :post, class: "block" %>
+    <% unless user.id == current_user&.id %>
+      <div class="w-full text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
+        <% if logged_in? %>
+          <% if current_user.followees.include?(user) %>
+            <%= link_to "Unfollow", unfollow_user_path, method: :post, class: "block" %>
+          <% else %>
+            <%= link_to "Follow", follow_user_path, method: :post, class: "block" %>
+          <% end%>
         <% else %>
-          <%= link_to "Follow", follow_user_path, method: :post, class: "block" %>
-        <% end%>
-      <% else %>
-        <%= link_to "Follow", login_path, class: "block" %>
-      <% end %>
-    </div>
+          <%= link_to "Follow", login_path, class: "block" %>
+        <% end %>
+      </div>
+    <% end %>
     
 
     <div class="my-3">
