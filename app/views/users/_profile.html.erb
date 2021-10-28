@@ -6,6 +6,16 @@
         <span class="font-bold text-xl break-all"><%= user.username %></span>
       </div>
     <% end %>
+
+    <div class="flex justify-evenly mb-3">
+      <label class="block uppercase tracking-wide text-black text-xs font-bold">
+        <%= user.followers.length %> Followers
+      </label>
+      <label class="block uppercase tracking-wide text-black text-xs font-bold">
+        <%= user.followees.length %> Following
+      </label>
+    </div>
+
     <% unless user.id == current_user&.id %>
       <div class="w-full text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
         <% if logged_in? %>
@@ -20,9 +30,8 @@
       </div>
     <% end %>
     
-
     <div class="my-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold" for="grid-first-name">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold">
         Info
       </label>
       <p><%= user.info %></p>
