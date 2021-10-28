@@ -1,18 +1,31 @@
-# Rails Blog
-My blog
+# Bloggy
+An awesome blog built with Ruby on Rails.
+
+[Live view](https://bloggy123.herokuapp.com/)
+
+## Technologies
+- Ruby on Rails 6.1
+- PostgreSQL 14.0
+- TailwindCSS
+- FontAwesome
+
 
 ## Install dependencies
 ```bash
-bundle install && yarn install
+bundle && yarn
+```
+
+## Initialize the database
+```bash
+rails db:create db:migrate db:seed
 ```
 
 ## Recompile webpack
-If you want to recompile webpack, run the following command:
 ```bash
 rails webpacker:clean && rails webpacker:clobber && rails webpacker:compile
 ```
 
 ## Run app
 ```bash
-rails server
+rails s
 ```
