@@ -1,8 +1,13 @@
 <div class="my-20 mx-auto flex justify-center">
   <div class="w-4/5 lg:w-3/6">
     <h1 class="text-3xl font-black mb-3"><%= @article.title %></h1>
-    <i class="fas fa-user-edit text-lg text-gray-500"></i>
-    <span class="text-lg text-gray-500"><%= User.find(@article.user_id).username %></span>
+    <% author = User.find(@article.user_id) %>
+
+    <%= link_to show_user_path(author.username) do %>
+      <i class="fas fa-user-edit text-lg text-gray-500"></i>
+      <span class="text-lg text-gray-500">@<%= author.username %></span>
+    <% end %>
+
     <br>
     <i class="far fa-calendar-plus text-lg text-gray-500"></i>
     <span class="text-lg text-gray-500">Created on <%= @article.created_at.strftime('%B %d, %Y') %></span>
@@ -50,15 +55,15 @@
       <h2 class="text-xl">Add a comment:</h2>
       <hr/>
       <% if logged_in? %>
-        <% if current_user.followees.include?(User.find(@article.user_id)) || current_user.id == @article.user_id %>
+        <% if current_user.followees.include?(author) || current_user.id == author.id %>
           <%= render 'comments/form' %>
         <% else %>
           <h3 class="text-center my-4">
             Please 
             <strong>
-              <%= link_to "follow @#{User.find(@article.user_id).username}", 
-                  follow_user_path(User.find(@article.user_id)), 
-                  method: :hpost %>
+              <%= link_to "follow @#{author.username}", 
+                  follow_user_path(author),
+                  method: :post %>
             </strong>
             to add a comment!
           </h3>

@@ -1,10 +1,11 @@
 <div class="w-full">
   <div class="rounded-md border p-5">
-    <div class="flex items-center pb-3">
-      <i class="fas fa-user-circle text-4xl pr-2"></i>
-      <span class="font-bold text-xl break-all"><%= user.username %></span>
-    </div>
-
+    <%= link_to show_user_path(user.username), class: "block" do %>
+      <div class="flex items-center pb-3">
+        <i class="fas fa-user-circle text-4xl pr-2"></i>
+        <span class="font-bold text-xl break-all"><%= user.username %></span>
+      </div>
+    <% end %>
     <% unless user.id == current_user&.id %>
       <div class="w-full text-center cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">
         <% if logged_in? %>
