@@ -1,3 +1,12 @@
-<div class="mx-auto max-w-xl">
+<div class="mx-auto p-10 w-4/5 md:w-2/5">
   <%= render 'users/profile', user: @user %>
+
+  <h4 class="font-bold text-lg pt-5 pb-1">Articles published</h4>
+  <ul>
+    <% @user.articles.each do |article| %>
+      <li>
+        <%= render 'articles/article_item', article: article %>
+      </li>
+    <% end %>
+  </ul>
 </div>
