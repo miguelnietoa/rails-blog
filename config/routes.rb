@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users, except: %i[new show]
-  get '/:username', to: 'users#show', as: 'show_user'
+  get '/users/:username', to: 'users#show', as: 'show_user'
   post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
   post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
 
